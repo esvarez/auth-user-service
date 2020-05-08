@@ -7,6 +7,7 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import {AppRoutingModule} from '../../app-routing.module';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -16,6 +17,8 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
     CommonModule,
     AppRoutingModule,
     IconsProviderModule,
+    FormsModule,
+    ReactiveFormsModule,
     NzButtonModule,
     NzFormModule,
     NzInputModule,

@@ -4,8 +4,8 @@ import {DashboardComponent} from './modules/writer/pages/dashboard/dashboard.com
 import {CategoriesComponent} from './modules/writer/pages/categories/categories.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/admin' },
-  { path: 'admin', component: DashboardComponent,
+  { path: '', pathMatch: 'full', redirectTo: '/writer' },
+  { path: 'writer', component: DashboardComponent,
     children: [
       { path: 'categories', component: CategoriesComponent }
     ]

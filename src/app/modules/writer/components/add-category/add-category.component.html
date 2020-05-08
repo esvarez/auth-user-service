@@ -1,7 +1,7 @@
 <button nz-button nzType="primary" (click)="showModal()">
   <span>New Category</span>
 </button>
-<!--
+
 <nz-modal
   [(nzVisible)]="isVisible"
   nzTitle="Add Category"
@@ -10,12 +10,13 @@
   [nzOkLoading]="isOkLoading"
 >
 
-  <nz-form-item>
-    <nz-form-control nzErrorTip="Please input a name!">
-      <nz-input-group nzPrefixIcon="group">
-        <input type="text" nz-input formControlName="userName" placeholder="Category" />
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
+  <div [formGroup]="categoryForm" >
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input a name!">
+        <nz-input-group nzPrefixIcon="group">
+          <input type="text" nz-input formControlName="name" placeholder="Category" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
 </nz-modal>
--->
