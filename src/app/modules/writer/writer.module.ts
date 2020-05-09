@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
+
 @NgModule({
   declarations: [DashboardComponent, CategoriesComponent, CategoryListComponent, AddCategoryComponent],
   imports: [
