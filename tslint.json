@@ -15,6 +15,10 @@
       "esb",
       "camelCase"
     ],
+    "semicolon": [
+      true,
+      "never"
+    ],
     "component-selector": [
       true,
       "element",

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {CategoryFacade} from '../../store/facade/category.facade'
+import {Observable} from 'rxjs'
+import {Category} from '../../../../shared/models'
 
 @Component({
   selector: 'esb-category-list',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryListComponent implements OnInit {
 
-  constructor() { }
+  isLoading$ = this.categoryFacade.isLoading
+  categories$ = this.categoryFacade.allCategories$
+
+  constructor(private categoryFacade: CategoryFacade) { }
 
   ngOnInit(): void {
+    this.categoryFacade.loadCategories()
   }
 
 }

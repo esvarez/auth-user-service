@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import {NzModalRef, NzModalService} from 'ng-zorro-antd'
+import {CategoryFacade} from '../../store/facade/category.facade'
 
 @Component({
   selector: 'esb-add-category',
@@ -8,11 +10,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddCategoryComponent implements OnInit {
 
-  isVisible = false
-  isOkLoading = false
+  isOpen = this.categoryFacade.isOpen
+  isUploading = this.categoryFacade.isUploading
   categoryForm: FormGroup
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              public categoryFacade: CategoryFacade) { }
 
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
@@ -20,29 +23,8 @@ export class AddCategoryComponent implements OnInit {
     })
   }
 
-  showModal(): void {
-    this.isVisible = true;
-  }
-
-  handleOk(): void {
-
-    if (this.categoryForm.invalid) {
-      for (const i in this.categoryForm.controls) {
-        this.categoryForm.controls[i].markAsDirty();
-        this.categoryForm.controls[i].updateValueAndValidity();
-      }
-    }
-
-    if (this.categoryForm.valid) {
-      this.isOkLoading = true;
-      setTimeout(() => {
-        this.isVisible = false;
-        this.isOkLoading = false;
-      }, 3000);
-    }
-  }
-
-  handleCancel(): void {
-    this.isVisible = false;
+  saveCategory(): void {
+    const category = { ... this.categoryForm.value }
+    this.categoryFacade.storeCategory(category)
   }
 }

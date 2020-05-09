@@ -9,8 +9,7 @@ const routes: Routes = [
     children: [
       { path: 'categories', component: CategoriesComponent }
     ]
-  },
-  { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) }
+  }
 ];
 
 @NgModule({

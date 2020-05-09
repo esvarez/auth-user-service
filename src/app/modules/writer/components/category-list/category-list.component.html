@@ -1,10 +1,10 @@
-<nz-list nzBordered nzSize="small">
+<nz-list nzBordered nzSize="small" [nzLoading]="isLoading$ | async">
   <nz-list-header>Categories</nz-list-header>
-  <li nz-list-item nzNoFlex>
+  <li nz-list-item nzNoFlex *ngFor="let category of categories$ | async">
     <ul nz-list-item-actions>
       <nz-list-item-action><a >edit</a></nz-list-item-action>
       <nz-list-item-action><a >delete</a></nz-list-item-action>
     </ul>
-    Category
+    {{ category.name }}
   </li>
 </nz-list>
