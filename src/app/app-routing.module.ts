@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {DashboardComponent} from './modules/writer/pages/dashboard/dashboard.component';
-import {CategoriesComponent} from './modules/writer/pages/categories/categories.component';
+import { NgModule } from '@angular/core'
+import { Routes, RouterModule } from '@angular/router'
+import {DashboardComponent} from './modules/writer/pages/dashboard/dashboard.component'
+import {CategoriesComponent} from './modules/writer/pages/categories/categories.component'
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/writer' },
