@@ -1,0 +1,19 @@
+<button nz-button nzType="primary" (click)="categoryFacade.openForm()">
+  <span>New Category</span>
+</button>
+<nz-modal [nzVisible]="isOpen | async" nzTitle="Add Category">
+
+  <div [formGroup]="categoryForm" >
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input a name!">
+        <nz-input-group nzPrefixIcon="group">
+          <input type="text" nz-input formControlName="name" placeholder="Category" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="categoryFacade.closeForm()" [disabled]="isUploading | async" >Cancel</button>
+    <button nz-button nzType="primary" (click)="saveCategory()" [nzLoading]="isUploading | async" [disabled]="categoryForm.invalid" >Save Category</button>
+  </div>
+</nz-modal>
