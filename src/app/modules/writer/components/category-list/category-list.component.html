@@ -3,7 +3,11 @@
   <li nz-list-item nzNoFlex *ngFor="let category of categories$ | async">
     <ul nz-list-item-actions>
       <nz-list-item-action><a >edit</a></nz-list-item-action>
-      <nz-list-item-action><a >delete</a></nz-list-item-action>
+      <nz-list-item-action>
+        <a nz-popconfirm nzPopconfirmTitle="Are you sure?" nzOkText="ok" nzCancelText="cancel" (nzOnConfirm)="categoryFacade.deleteCategory(category)">
+          delete
+        </a>
+      </nz-list-item-action>
     </ul>
     {{ category.name }}
   </li>

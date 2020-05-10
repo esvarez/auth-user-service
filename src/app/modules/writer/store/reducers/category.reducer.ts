@@ -7,6 +7,7 @@ export interface CategoryState {
   isLoaded: boolean
   isUploading: boolean
   isUploaded: boolean
+  message: string
   categories: Category[]
   error: any
 }
@@ -15,10 +16,11 @@ const initState: CategoryState = {
   isOpen: null,
   isLoading: null,
   isLoaded: null,
-  isUploading: false,
+  isUploading: null,
   isUploaded: null,
   categories: null,
-  error: null
+  error: null,
+  message: null
 }
 
 export function categoryReducer(state = initState, action: fromCategory.categoryActions): CategoryState {
@@ -55,14 +57,16 @@ export function categoryReducer(state = initState, action: fromCategory.category
     case fromCategory.STORE_NEW_CATEGORY:
       return {
         ...state,
-        isUploading: true
+        isUploading: true,
+        isUploaded: null
       }
     case fromCategory.STORE_NEW_CATEGORY_SUCCESS:
       return {
         ...state,
-        isLoaded: true,
+        isUploaded: true,
         isUploading: false,
         isOpen: false,
+        message: `${action.category.name} stored successfully`,
         categories: [
           ...state.categories,
           action.category
@@ -79,13 +83,15 @@ export function categoryReducer(state = initState, action: fromCategory.category
     case fromCategory.UPDATE_CATEGORY:
       return {
         ...state,
-        isUploading: true
+        isUploading: true,
+        isUploaded: null
       }
     case fromCategory.UPDATE_CATEGORY_SUCCESS:
       return {
         ...state,
         isUploading: false,
-        isUploaded: true
+        isUploaded: true,
+        message: `${action.category.name} updated successfully`,
       }
     case fromCategory.UPDATE_CATEGORY_FAIL:
       return {
@@ -96,13 +102,17 @@ export function categoryReducer(state = initState, action: fromCategory.category
     case fromCategory.DELETE_CATEGORY:
       return {
         ...state,
-        isUploading: true
+        isUploading: true,
+        isUploaded: null
       }
     case fromCategory.DELETE_CATEGORY_SUCCESS:
+      const filtered = state.categories.filter(category => category.id !== action.category.id )
       return {
         ...state,
         isUploaded: true,
-        isUploading: false
+        isUploading: false,
+        message: `${action.category.name} deleted successfully`,
+        categories: [ ... filtered ]
       }
     case fromCategory.DELETE_CATEGORY_FAIL:
       return {

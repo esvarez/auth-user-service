@@ -18,11 +18,13 @@ import { State } from 'src/app/store/reducer'
 })
 export class CategoryFacade {
 
-  isOpen = this.store.select(state => state.categoryState.isOpen)
-  isLoading = this.store.select(state => state.categoryState.isLoading)
-  isLoaded = this.store.select(state => state.categoryState.isLoaded)
-  isUploaded = this.store.select(state => state.categoryState.isUploaded)
-  isUploading = this.store.select(state => state.categoryState.isUploading)
+  error$ = this.store.select(state => state.categoryState.error)
+  message$ = this.store.select(state => state.categoryState.message)
+  isOpen$ = this.store.select(state => state.categoryState.isOpen)
+  isLoading$ = this.store.select(state => state.categoryState.isLoading)
+  isLoaded$ = this.store.select(state => state.categoryState.isLoaded)
+  isUploaded$ = this.store.select(state => state.categoryState.isUploaded)
+  isUploading$ = this.store.select(state => state.categoryState.isUploading)
   allCategories$ = this.store.select(state => state.categoryState.categories)
 
   constructor(private store: Store<State>) { }
@@ -46,7 +48,7 @@ export class CategoryFacade {
     this.store.dispatch(new UpdateCategoryAction(category))
   }
 
-  public deleteCategory(id: number) {
-    this.store.dispatch(new DeleteCategoryAction(id))
+  public deleteCategory(category: Category) {
+    this.store.dispatch(new DeleteCategoryAction(category))
   }
 }

@@ -73,12 +73,12 @@ export class UpdateCategoryFailAction implements Action {
 
 export class DeleteCategoryAction implements Action {
   readonly type = DELETE_CATEGORY
-  constructor(public id: number) { }
+  constructor(public category: Category) { }
 }
 
 export class DeleteCategorySuccessAction implements Action {
   readonly type = DELETE_CATEGORY_SUCCESS
-  constructor(public id: number) { }
+  constructor(public category: Category) { }
 }
 
 export class DeleteCategoryFailAction implements Action {

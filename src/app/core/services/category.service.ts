@@ -36,7 +36,9 @@ export class CategoryService {
     return this.httpClient.put<Category>(`${this.url}${this.categories}/${category.id}`, body, { headers: this.headers })
   }
 
-  public deleteCategory(id: number): Observable<number> {
-    return this.httpClient.delete<number>(`${this.url}${this.categories}/${id}`)
+  public deleteCategory(category: Category): Observable<Category> {
+    console.log(category)
+    console.log(`${this.url}${this.categories}/${category.id}`)
+    return this.httpClient.delete<Category>(`${this.url}${this.categories}/${category.id}`)
   }
 }

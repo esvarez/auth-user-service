@@ -1,6 +1,15 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { NzButtonModule, NzFormModule, NzInputModule, NzLayoutModule, NzListModule, NzMenuModule, NzModalModule} from 'ng-zorro-antd'
+import {
+  NzButtonModule,
+  NzFormModule,
+  NzInputModule,
+  NzLayoutModule,
+  NzListModule,
+  NzMenuModule,
+  NzMessageModule,
+  NzModalModule, NzPopconfirmModule
+} from 'ng-zorro-antd'
 import { DashboardComponent } from './pages/dashboard/dashboard.component'
 import { IconsProviderModule} from '../icons-provider/icons-provider.module'
 import { CategoriesComponent } from './pages/categories/categories.component'
@@ -25,7 +34,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     NzLayoutModule,
     NzListModule,
     NzMenuModule,
+    NzMessageModule,
     NzModalModule,
+    NzPopconfirmModule
   ]
 })
 export class WriterModule { }

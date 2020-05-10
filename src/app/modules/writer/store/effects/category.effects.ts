@@ -31,8 +31,9 @@ export class CategoryEffects {
   addCategory$ = this.actions$
     .pipe(
       ofType( categoryActions.STORE_NEW_CATEGORY),
-      switchMap(action => {
-        return this.categoryService.saveCategory(action['category'])
+      map(action => action['category']),
+      switchMap(category => {
+        return this.categoryService.saveCategory(category)
           .pipe(
             map( categorySaved => new categoryActions.StoreNewCategorySuccessAction(categorySaved)),
             catchError( err => of(new categoryActions.StoreNewCategoryFailAction(err)))
@@ -44,6 +45,7 @@ export class CategoryEffects {
   updateCategory$ = this.actions$
     .pipe(
       ofType(categoryActions.UPDATE_CATEGORY),
+      map(action => action['category']),
       switchMap(category => {
         return this.categoryService.updateCategory(category)
           .pipe(
@@ -57,10 +59,11 @@ export class CategoryEffects {
   deleteCategory$ = this.actions$
     .pipe(
       ofType(categoryActions.DELETE_CATEGORY),
-      switchMap(id => {
-        return this.categoryService.deleteCategory(id)
+      map(action => action['category']),
+      switchMap(category => {
+        return this.categoryService.deleteCategory(category)
           .pipe(
-            map( idDeleted => new categoryActions.DeleteCategorySuccessAction(idDeleted)),
+            map( status => new categoryActions.DeleteCategorySuccessAction(category)),
             catchError(err => of(new categoryActions.DeleteCategoryFailAction(err)))
           )
       })
