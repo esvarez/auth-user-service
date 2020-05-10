@@ -19,7 +19,6 @@ export class AddCategoryComponent implements OnInit, OnDestroy {
   error$ = this.categoryFacade.error$
   isOpen$ = this.categoryFacade.isOpen$
   isUploading$ = this.categoryFacade.isUploading$
-  isUploaded$ = this.categoryFacade.isUploaded$
   categoryForm: FormGroup
 
   constructor(private formBuilder: FormBuilder,
@@ -31,14 +30,13 @@ export class AddCategoryComponent implements OnInit, OnDestroy {
       name: [null, [Validators.required]]
     })
     this.messageSubscription = this.categoryFacade.message$.subscribe(message => this.textMessage = message)
-    this.statusSubscription = this.isUploaded$.subscribe(isSuccess => {
+    this.statusSubscription = this.categoryFacade.isUploaded$.subscribe(isSuccess => {
       if (isSuccess != null) {
         isSuccess
           ? this.message.create('success', this.textMessage)
           : this.message.create('error', 'Error')
       }
     })
-
   }
 
   ngOnDestroy(): void {

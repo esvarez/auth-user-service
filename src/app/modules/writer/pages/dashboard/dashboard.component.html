@@ -12,6 +12,20 @@
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzTitle="Post" nzIcon="form">
+        <ul>
+          <li nz-menu-item routerLink="/writer/new-post" nzMatchRouter>
+            <a>New Post</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Posts</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-menu-item routerLink="/writer/categories" nzMatchRouter>
+        <i nz-icon nzType="group"></i>
+        <span>Categories</span>
+      </li>
       <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
@@ -24,17 +38,6 @@
             <a>Workplace</a>
           </li>
         </ul>
-      </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
-          </li>
-        </ul>
-      </li>
-      <li nz-menu-item routerLink="/writer/categories">
-        <i nz-icon nzType="group"></i>
-        <span>Categories</span>
       </li>
     </ul>
   </nz-sider>

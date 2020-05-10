@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import {
+  NzAutocompleteModule,
   NzButtonModule,
   NzFormModule,
   NzInputModule,
@@ -16,18 +17,19 @@ import { CategoriesComponent } from './pages/categories/categories.component'
 import { AppRoutingModule} from '../../app-routing.module'
 import { CategoryListComponent } from './components/category-list/category-list.component'
 import { AddCategoryComponent } from './components/add-category/add-category.component'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewPostComponent } from './pages/new-post/new-post.component';
+import { PostFormComponent } from './components/post-form/post-form.component'
 
 @NgModule({
-  declarations: [DashboardComponent, CategoriesComponent, CategoryListComponent, AddCategoryComponent],
+  declarations: [DashboardComponent, CategoriesComponent, CategoryListComponent, AddCategoryComponent, NewPostComponent, PostFormComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
     IconsProviderModule,
     FormsModule,
     ReactiveFormsModule,
+    NzAutocompleteModule,
     NzButtonModule,
     NzFormModule,
     NzInputModule,
