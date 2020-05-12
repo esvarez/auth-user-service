@@ -6,51 +6,37 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="content">Content</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Content is required">
+      <textarea rows="4" nz-input formControlName="title"></textarea>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" >Test</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Content is required">
+      <esb-zone-text></esb-zone-text>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="category" nzRequired>Category</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input a category">
-      <input nz-input formControlName="password" id="category" [autocomplete]="auto" />
-      <nz-autocomplete #auto>
+      <input nz-input formControlName="password" id="category" [autocomplete]="autoCom" />
+      <nz-autocomplete #autoCom>
         <nz-auto-option *ngFor="let category of categories | async" nzValue="option.id" [nzLabel]="category.name">
           {{ category.name }}
         </nz-auto-option>
       </nz-autocomplete>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>Confirm Password</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
-      <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
-      <ng-template #errorTpl let-control>
-        <ng-container *ngIf="control.hasError('required')">
-          Please confirm your password!
-        </ng-container>
-        <ng-container *ngIf="control.hasError('confirm')">
-          Two passwords that you enter is inconsistent!
-        </ng-container>
-      </ng-template>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nickname" nzRequired>
-          <span>
-            Nickname
-            <i nz-icon nz-tooltip nzTitle="What do you want other to call you" nzType="question-circle" nzTheme="outline"></i>
-          </span>
-    </nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your nickname!">
-      <input nz-input id="nickname" formControlName="nickname" />
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="website" nzRequired>Autocmplete</nz-form-label>
-  </nz-form-item>
+
   <nz-form-item nz-row class="register-area">
     <nz-form-control [nzSpan]="14" [nzOffset]="6">
       <button nz-button nzType="primary">Register</button>
     </nz-form-control>
   </nz-form-item>
 </form>
-
+<!--
+{{inputValue | json}}
 <div class="example-input">
   <input placeholder="input here" nz-input [(ngModel)]="inputValue" [nzAutocomplete]="auto" />
   <nz-autocomplete #auto [compareWith]="compareFun">
@@ -59,3 +45,4 @@
     </nz-auto-option>
   </nz-autocomplete>
 </div>
+-->

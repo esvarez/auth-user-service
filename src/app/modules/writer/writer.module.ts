@@ -20,9 +20,10 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewPostComponent } from './pages/new-post/new-post.component';
 import { PostFormComponent } from './components/post-form/post-form.component'
+import {ZoneTextComponent} from '../../shared/components/zone-text/zone-text.component'
 
 @NgModule({
-  declarations: [DashboardComponent, CategoriesComponent, CategoryListComponent, AddCategoryComponent, NewPostComponent, PostFormComponent],
+  declarations: [DashboardComponent, CategoriesComponent, CategoryListComponent, AddCategoryComponent, NewPostComponent, PostFormComponent, ZoneTextComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
